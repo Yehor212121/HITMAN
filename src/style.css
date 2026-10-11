@@ -1,0 +1,134 @@
+/* ===== Design tokens (dark theme only) ===== */
+:root{--black:#0a0a0a;--char:#141414;--line:#2a1a1e;--red:#c41e3a;--crim:#7a0f22;--white:#fff;--mute:#b5b0b1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px;height:auto}
+body{margin:0;background:var(--black);color:var(--white);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{line-height:1.15;margin:0 0 .5em}
+p{margin:0 0 1em;color:var(--mute);max-width:70ch}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+section{padding:90px 6vw;max-width:1280px;margin:0 auto}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;padding-left:18px;border-left:4px solid var(--red)}
+.lead{margin-bottom:2.2em}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.card{background:var(--char);border:1px solid var(--line);border-top:3px solid var(--crim);padding:22px;transition:.25s}
+.card:hover{border-color:var(--red);border-top-color:var(--red);transform:translateY(-4px);box-shadow:0 10px 30px rgba(196,30,58,.18)}
+.card h3{font-size:1.1rem}.card p{font-size:.93rem;margin-bottom:.6em}
+.card .tag{display:inline-block;font-size:.75rem;color:var(--red);border:1px solid var(--crim);padding:1px 8px;margin-bottom:10px}
+.card b{color:var(--white);font-weight:600}
+
+/* Character cards with portraits */
+.ch{padding-top:0;overflow:hidden}
+.ch .pic{display:block;width:calc(100% + 44px);max-width:none;height:210px;margin:0 -22px 18px;object-fit:cover;object-position:center 20%;border-bottom:1px solid var(--crim);filter:saturate(.9) contrast(1.05);transition:.3s}
+.ch .pic.logo{object-fit:contain;object-position:center;background:#000;padding:10px}
+.ch:hover .pic{filter:saturate(1.1) contrast(1.1)}
+/* ===== Top bar: game tabs + navigation ===== */
+.top{position:sticky;top:0;z-index:50;background:#000;border-bottom:1px solid var(--crim)}
+.tabs{display:flex;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;background:#050505;color:var(--mute);border:0;border-bottom:3px solid transparent;padding:14px 10px;font:700 .95rem/1.2 Inter,system-ui,sans-serif;cursor:pointer;transition:.2s}
+.tabs button:hover{color:#fff;background:#14080b}
+.tabs button[aria-selected="true"],.tabs button.on{color:#fff;border-bottom-color:var(--red);background:linear-gradient(#0000,rgba(196,30,58,.25))}
+.tabs .lang{display:flex;border-left:1px solid var(--line)}
+.tabs .lang button{flex:none;padding:14px 16px}
+/* Hide everything that belongs to the other game */
+body[data-game="abs"] [data-game="woa"],body[data-game="woa"] [data-game="abs"]{display:none}
+/* ===== Navigation ===== */
+nav{display:flex;gap:4px;overflow-x:auto;padding:0 3vw;scrollbar-width:none}
+nav a{white-space:nowrap;text-decoration:none;padding:20px 14px;font-size:.9rem;color:var(--mute);border-bottom:2px solid transparent;transition:.2s}
+nav a:hover{color:var(--white);border-bottom-color:var(--red);background:linear-gradient(#0000,rgba(196,30,58,.15))}
+
+/* ===== Hero ===== */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;
+background:radial-gradient(ellipse at 75% 40%,rgba(196,30,58,.35),transparent 55%),linear-gradient(#0a0a0a,#000)}
+.hero .geo{position:absolute;right:-8vw;top:50%;width:min(70vh,60vw);aspect-ratio:1;transform:translateY(-50%) rotate(45deg);border:2px solid var(--red);opacity:.5;animation:spin 60s linear infinite}
+.hero .geo::before,.hero .geo::after{content:"";position:absolute;inset:12%;border:1px solid var(--crim)}
+.hero .geo::after{inset:28%;background:rgba(122,15,34,.35)}
+.hero .bar{position:absolute;right:calc(6vw + 4vh);bottom:10vh;width:150px;height:46px;background:repeating-linear-gradient(90deg,var(--red) 0 3px,transparent 3px 7px,var(--red) 7px 8px,transparent 8px 13px);opacity:.6}
+.hero-in{position:relative;padding:0 6vw;max-width:1280px;margin:0 auto;width:100%}
+.hero small{color:var(--red);letter-spacing:.3em;font-size:.8rem}
+.hero h1{font-size:clamp(3rem,11vw,8rem);font-weight:900;letter-spacing:-.04em;margin:.2em 0}
+.hero p{font-size:1.2rem;color:#ddd}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:14px 30px;margin:10px 12px 0 0;text-decoration:none;font-weight:700;border:1px solid var(--red);transition:.25s}
+.btn:hover{background:transparent;box-shadow:0 0 24px rgba(196,30,58,.6)}
+.btn.alt{background:transparent}.btn.alt:hover{background:var(--red)}
+
+/* ===== Timeline ===== */
+.tl{position:relative;margin:30px 0 50px;padding-left:28px;border-left:2px solid var(--crim)}
+.tl div{position:relative;margin-bottom:28px}
+.tl div::before{content:"";position:absolute;left:-36px;top:6px;width:14px;height:14px;background:var(--red);box-shadow:0 0 12px var(--red);transform:rotate(45deg)}
+.tl h3{margin:0;font-size:1.1rem}.tl span{color:var(--red);font-size:.85rem}
+.m{padding:0;list-style:none;display:grid;gap:10px}
+.m li{padding:12px 16px;background:var(--char);border-left:3px solid var(--crim);color:var(--mute);transition:.2s}
+.m li:hover{border-left-color:var(--red);background:#1b1013}.m b{color:#fff}
+.two{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+
+/* ===== Interactive map ===== */
+.map{position:relative;aspect-ratio:2/1;background:radial-gradient(#1a0b0f,#050505);border:1px solid var(--crim);overflow:hidden;box-shadow:0 0 60px rgba(196,30,58,.15) inset}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.land{fill:#1a1214;stroke:var(--crim);stroke-width:1.2}
+.grat{stroke:rgba(196,30,58,.12);stroke-width:.6}
+.mk{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;border:0;padding:0;background:var(--red);cursor:pointer;box-shadow:0 0 10px var(--red);transition:transform .2s}
+.mk::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--red);animation:pulse 2.2s ease-out infinite}
+.mk:hover,.mk.on{transform:scale(1.35);background:#fff}
+.pop{position:absolute;z-index:5;width:min(300px,86%);background:rgba(10,10,10,.96);border:1px solid var(--red);padding:18px;box-shadow:0 0 40px rgba(196,30,58,.4);display:none}
+.pop.show{display:block}.pop h3{color:var(--red);margin:0 0 2px}.pop p{font-size:.88rem;margin:.4em 0}
+.pop .x{position:absolute;right:8px;top:4px;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+.legend{color:var(--mute);font-size:.85rem;margin-top:10px}
+
+footer{border-top:1px solid var(--crim);text-align:center;padding:40px 6vw;color:var(--mute);font-size:.88rem}
+footer b{color:var(--red)}
+
+@keyframes pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(3);opacity:0}}
+@keyframes spin{to{transform:translateY(-50%) rotate(405deg)}}
+@media(max-width:700px){section{padding:60px 5vw}.map{aspect-ratio:1.4/1}.hero .bar{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Numbered mission chronology (Absolution) */
+.chrono{counter-reset:c}
+.chrono li{counter-increment:c;position:relative;padding-left:54px}
+.chrono li::before{content:counter(c);position:absolute;left:16px;top:12px;color:var(--red);font-weight:800}
+#absolution .two>div:first-child{position:sticky;top:130px;align-self:start}
+@media(max-width:700px){#absolution .two>div:first-child{position:static}}
+
+/* Lore timeline with the Absolution cover on the right */
+.tl-wrap{display:grid;grid-template-columns:1fr minmax(240px,340px);gap:48px;align-items:start}
+.tl-wrap .tl{margin-bottom:30px}
+.cover{margin:30px 0 0;position:sticky;top:130px;border:1px solid var(--crim);box-shadow:0 0 40px rgba(196,30,58,.25);transition:.3s}
+.cover:hover{border-color:var(--red);box-shadow:0 0 50px rgba(196,30,58,.5)}
+.cover img{display:block;width:100%;height:auto}
+@media(max-width:800px){.tl-wrap{grid-template-columns:1fr}.cover{position:static;max-width:300px;margin:0 auto 30px}}
+
+
+.sub{margin-top:56px;font-size:1.5rem}
+
+/* Lore cover: same height as the timeline text next to it */
+.tl-wrap{align-items:stretch;margin:30px 0 40px}
+.tl-wrap .tl{margin:0}
+.tl-wrap .tl>div:last-child{margin-bottom:0}
+.tl-wrap .cover{position:relative;top:auto;margin:0;min-height:240px;overflow:hidden}
+.tl-wrap .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}
+@media(max-width:800px){.tl-wrap .cover{max-width:300px;margin:0 auto;min-height:0}.tl-wrap .cover img{position:static;height:auto}}
+
+/* Lore cover: floats top-right at the level of the section title, shown uncropped */
+.tl-wrap{display:block;margin:30px 0 40px}
+#lore>.cover{float:right;position:static;width:340px;max-width:38%;min-height:0;margin:0 0 30px 48px;overflow:visible}
+#lore>.cover img{position:static;display:block;width:100%;height:auto}
+#lore>.grid{clear:both}
+@media(max-width:800px){#lore>.cover{float:none;max-width:300px;margin:0 auto 30px}}
+
+/* Map: thin lines at any zoom, chapter numbers on Absolution markers */
+.land,.grat line{vector-effect:non-scaling-stroke}
+.mk{font:700 9px/18px Inter,system-ui,sans-serif;color:#fff;text-align:center}
+.mk:hover,.mk.on{color:#000}
+@media(max-width:700px){.mk{width:14px;height:14px;margin:-7px 0 0 -7px;font-size:8px;line-height:14px}}
+
+/* Mission cards: show the full target screenshot */
+.ch .pic.shot{height:auto;aspect-ratio:900/507;object-fit:cover;object-position:center}
+
+/* Target portraits on mission cards */
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:12px 10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.tg figure{margin:0;text-align:center}
+.tg img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--crim);transition:.25s}
+.tg figure:hover img{border-color:var(--red);box-shadow:0 0 14px rgba(196,30,58,.5)}
+.tg figcaption{margin-top:6px;font-size:.72rem;line-height:1.25;color:var(--mute)}
