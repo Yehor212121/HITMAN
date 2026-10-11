@@ -1,0 +1,15 @@
+{
+  "name": "hitman-archive",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Unofficial fan archive for Hitman: Absolution and the World of Assassination trilogy",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}
